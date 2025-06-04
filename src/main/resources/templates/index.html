@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      h1{
+      h1 {
         text-align: center;
       }
-      table{
+      table {
         margin: 20px auto;
         border-collapse: collapse;
       }
-      th, tr,td{
-        width: 200px;
-        height: 100px;
+      th,
+      tr,
+      td {
+        width: 150px;
+        height: 60px;
         border: 2px solid #ccc;
         background-color: lightskyblue;
         text-align: center;
         font-size: 2.2rem;
-        box-shadow: 10px 10px 20px rgba( 0,  0,  0, 0.5);
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
       }
-      td:nth-of-type(2){
+      td:nth-of-type(2) {
         background-color: rgb(109, 148, 192);
       }
-      th{
+      th {
         background-color: rgb(130, 130, 209);
         color: white;
       }
-      a{
+      a {
         text-decoration: none;
         color: black;
       }
@@ -48,7 +50,6 @@
         <!-- <td><a th:href="@{/__${page}__}" th:text="${page}"></a></td> -->
         <td><a th:href="@{/{vv}(vv=${page})}" th:text="${page}"></a></td>
       </tr>
-
     </table>
   </body>
 </html>

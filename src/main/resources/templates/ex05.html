@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/header:: myHeader }">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <div th:replace="~{fragments/gohome:: goToHome }"></div>
+  <hr />
+  <body>
+    <h1>ex05 Page</h1>
+    <h2>회원정보</h2>
+    <p>이름: <span th:text="${member.name}">이름 관련 데이터</span></p>
+    <p>
+      생년월일: <span th:text="${member.birthData}">생년월일 관련 데이터</span>
+    </p>
+    <p>이름: <span th:text="${member1.name}">이름 관련 데이터</span></p>
+    <p>
+      생년월일: <span th:text="${member1.birthData}">생년월일 관련 데이터</span>
+    </p>
+  </body>
+  <hr />
+  <div th:replace="~{fragments/footer:: myFooter }"></div>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/header:: myHeader }">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <div th:replace="~{fragments/gohome:: goToHome }"></div>
+  <hr />
+  <body>
+    <h1>ex07 Page</h1>
+    <fieldset>
+      <legend>Request Param 사용</legend>
+      <form action="/querystring">
+        <input type="text" name="inpName" id="" placeholder="이름" /><br />
+        <input type="text" name="inpAge" id="" placeholder="나이" /><br />
+        <input type="radio" name="inpGen" id="male" value="male" />
+        <label for="male">남성</label>
+        <input type="radio" name="inpGen" id="female" value="female" checked />
+        <label for="female">여성</label><br />
+        <select name="want" id="">
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="Oracle">Oracle</option>
+          <option value="Js">Js</option>
+        </select>
+        <input type="checkbox" id="ck" name="allow" />
+        <label for="ck">동의</label>
+        <hr />
+        <button type="submit">전송</button>
+      </form>
+
+      <!-- <ol th:if="${content} != null ? '내용이 없습니다' : ${content} "> -->
+      <ol th:if="${content[0]} != '이름:null'">
+        <li th:text="${content}"></li>
+      </ol>
+    </fieldset>
+  </body>
+  <hr />
+  <div th:replace="~{fragments/footer:: myFooter }"></div>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/header:: myHeader }">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 700px;
+      }
+      tr,
+      td,
+      th {
+        border: 1px solid darkblue;
+        background-color: lightblue;
+        width: 25%;
+        text-align: center;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <div th:replace="~{fragments/gohome:: goToHome }"></div>
+  <hr />
+  <body>
+    <h1>ex06 Page</h1>
+    <h2>붕어빵 정보</h2>
+    <!-- <p>맛: <span th:text="${redbean.flavor}"></span></p>
+    <p>가격: <span th:text="${redbean.price}"></span></p>
+    <p>제조일: <span th:text="${redbean.madeDate}"></span></p>
+    <hr />
+    <p>맛: <span th:text="${cream.flavor}"></span></p>
+    <p>가격: <span th:text="${cream.price}"></span></p>
+    <p>제조일: <span th:text="${cream.madeDate}"></span></p>
+    <hr />
+    <p>맛: <span th:text="${pizza.flavor}"></span></p>
+    <p>가격: <span th:text="${pizza.price}"></span></p>
+    <p>제조일: <span th:text="${pizza.madeDate}"></span></p> -->
+
+    <table border="1">
+      <tr>
+        <th>번호</th>
+        <th>맛</th>
+        <th>가격</th>
+        <th>제조일</th>
+      </tr>
+      <tr th:each="bungs, stat : ${bungs}">
+        <td th:text="${stat.count} + '번'"></td>
+        <td th:text="${bungs.flavor}"></td>
+        <td th:text="${bungs.price} + '원'"></td>
+        <td th:text="${#temporals.format(bungs.madeDate, 'yyyy-MM-dd')}"></td>
+      </tr>
+    </table>
+  </body>
+  <hr />
+  <div th:replace="~{fragments/footer:: myFooter }"></div>
+</html>
