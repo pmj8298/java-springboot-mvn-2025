@@ -125,10 +125,18 @@ public class My01Controller {
         return "ex07";
     }
 
-    @GetMapping({ "/pathvariable", "/pathvariable/{name}", "/pathvariable/{name}/{age}" })
-    public String ex08(@PathVariable(required = false) String name, String age, Model model) {
-        System.out.println("이름: " + name + "/ 나이: " + age);
+    @GetMapping({ "/pathvariable", "/ex08/{name}", "/ex08/{name}/{age}" })
+    public String ex08(@PathVariable(required = false) String name, @PathVariable(required = false) String age,
+            Model model) {
+        System.out.println("이름: " + name + " / 나이: " + age);
 
+        if (name != null && age != null) {
+            List<String> content = List.of(
+                    "이름: " + name,
+                    "나이: " + age);
+            model.addAttribute("content", content);
+        }
+        ;
         return "ex08";
     }
 

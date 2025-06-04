@@ -23,18 +23,21 @@
         <button type="submit">전송</button>
       </form>
     </fieldset>
+    <ol th:if="${content != null}">
+      <li th:each="c : ${content}" th:text="${c}"></li>
+    </ol>
   </body>
   <hr />
   <div th:replace="~{fragments/footer:: myFooter }"></div>
 
   <script>
-    const myform = document.getElementById("myform");
+    const myform = document.getElementById("myForm");
     myform.addEventListener("submit", (event) => {
       event.preventDefault();
       const name = document.querySelector("#input-name").value;
       const age = document.querySelector("#input-age").value;
 
-      window.localcation.href = `/ex08/${name}/${age}`;
+      window.location.href = `/ex08/${name}/${age}`;
     });
   </script>
 </html>
