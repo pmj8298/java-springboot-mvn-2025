@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/header:: myHeader }">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+        <div th:replace="~{fragments/gohome:: goToHome }"></div>
+        <body>
+        <h1>환영합니다</h1>
+        <p>여기는 Fragments를 실습하는 메인 컨텐츠 입니다.</p>
+        <p>위의 Head에는 myHeader 부분이 삽입되었고</p>
+        <p>아래의 footer에는 myFooter 부분이 삽입되었습니다</p>
+        </body>
+        <div th:replace="~{fragments/footer:: myFooter }"></div>
+    </html>
