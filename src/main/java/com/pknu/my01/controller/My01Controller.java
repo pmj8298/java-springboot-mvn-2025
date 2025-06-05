@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pknu.my01.dto.BungBBang;
@@ -18,7 +19,7 @@ public class My01Controller {
     @GetMapping("/")
     public String mainPage(Model model) {
         List<String> pageNames = List.of("model", "increase", "fragments", "if-unless", "DTO_ex1", "DTO_ex2",
-                "querystring", "pathvariable");
+                "GET_querystring", "GET_pathvariable", "POST_formdata", "final_chatbot");
         model.addAttribute("pages", pageNames);
 
         return "index";
@@ -104,7 +105,7 @@ public class My01Controller {
         return "ex06";
     }
 
-    @GetMapping("/querystring")
+    @GetMapping("/GET_querystring")
     public String ex07(@RequestParam(required = false) String inpName, String inpAge, String inpGen, String want,
             String allow, Model model) {
         // String inpName, int inpAge, String inpGen, String want, String allow;
@@ -125,7 +126,7 @@ public class My01Controller {
         return "ex07";
     }
 
-    @GetMapping({ "/pathvariable", "/ex08/{name}", "/ex08/{name}/{age}" })
+    @GetMapping({ "/GET_pathvariable", "/ex08/{name}", "/ex08/{name}/{age}" })
     public String ex08(@PathVariable(required = false) String name, @PathVariable(required = false) String age,
             Model model) {
         System.out.println("이름: " + name + " / 나이: " + age);
@@ -137,7 +138,43 @@ public class My01Controller {
             model.addAttribute("content", content);
         }
         ;
+        // model.addAttribute("name", name);
+        // model.addAttribute("age", age);
         return "ex08";
+    }
+
+    @GetMapping("/POST_formdata")
+    public String ex09() {
+        return "ex09";
+    }
+
+    @PostMapping("/POST_formdata")
+    public String ex09Post(@RequestParam String name, @RequestParam String age, Model model) {
+        System.out.println("이름: " + name + " / 나이: " + age);
+        // if (name != null && age != null) {
+        // List<String> content = List.of(
+        // "이름: " + name,
+        // "나이: " + age);
+        // model.addAttribute("content", content);
+        // }
+
+        model.addAttribute("name", name);
+        model.addAttribute("age", age);
+
+        try {
+            int parseAge = Integer.parseInt(age);
+            model.addAttribute("name", name);
+            model.addAttribute("age", parseAge);
+        } catch (NumberFormatException e) {
+            model.addAttribute("error", "나이는 숫자로 입력해야 합니다.");
+        }
+
+        return "ex09";
+    }
+
+    @GetMapping("/final_chatbot")
+    public String ex10Chat(Model model) {
+        return "ex10";
     }
 
 }
